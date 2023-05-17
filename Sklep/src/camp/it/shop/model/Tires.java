@@ -1,8 +1,6 @@
 package camp.it.shop.model;
 
-
-public class Tires {
-
+public class Tires implements Writable {
 
     private String brand;
     private String productName;
@@ -22,9 +20,13 @@ public class Tires {
         this.price = price;
         this.quantity = quantity;
         this.productCode = productCode;
-
     }
 
+    public Tires(String[] vars) {
+        this(vars[0], vars[1], vars[2], vars[3], Integer.parseInt(vars[4]), Integer.parseInt(vars[5]), Integer.parseInt(vars[6]), vars[7]);
+
+
+    }
 
     public String getBrand() {
         return brand;
@@ -107,7 +109,32 @@ public class Tires {
                 .append(this.productCode)
                 .toString();
     }
+
+    @Override
+    public String toCSV() {
+        return new StringBuilder()
+                .append(getClass().getSimpleName())
+                .append(";")
+                .append(this.brand)
+                .append(";")
+                .append(this.productName)
+                .append(";")
+                .append(this.season)
+                .append(";")
+                .append(this.size)
+                .append(";")
+                .append(this.year)
+                .append(";")
+                .append(this.price)
+                .append(";")
+                .append(this.quantity)
+                .append(";")
+                .append(this.productCode)
+                .toString();
+    }
 }
+
+
 
 
 
